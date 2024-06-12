@@ -1,0 +1,81 @@
+﻿@page "/editmachine/{MachineId:guid}"
+
+@rendermode InteractiveServer
+@using System.Threading.Tasks
+
+<h3>Edit Machine</h3>
+
+<div class="col-12 row">
+    <div class="col-2 text-center">
+        <!-- Optional content for center alignment -->
+    </div>
+    <div class="col-10 row">
+        <div class="col-12 col-xxl-8">
+            <EditForm Enhance Model="Machine"
+                FormName="EditMachine"
+                OnValidSubmit="@SaveChanges"> 
+                
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Machine ID</label>
+                    <div class="col-sm-8">
+                        <label type="text" class="form-control-plaintext">@MachineId</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Machine name</label>
+                    <div class="col-sm-8">
+                        <InputText id="machineName" class="form-control" @bind-Value="Machine.Name" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label">Status</label>
+                    <div class="col-sm-8">
+                        <InputCheckbox id="machineStatus" class="form-check-input" @bind-Value="Machine.Status" />
+                    </div>
+                </div>
+
+
+                <button type="button" class="btn btn-outline-primary btn-s" @onclick="@BackToMachine">Back to machine</button>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+
+                <button type="button" class="btn btn-danger my-1">Delete Machine</button>
+
+
+                
+
+
+            </EditForm>
+
+        </div>
+    </div>
+</div>
+
+@code {
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Load the machine details here
+        // For example:
+        // Machine = await MachineService.GetMachineById(MachineId);
+    }
+    private async Task BackToMachine()
+    {
+
+        NavigationManager.NavigateTo($"/machinedetail/{MachineId}"); // Redirect after save
+    }
+
+    //"@($"editmachine/{MachineId}"
+
+    private async Task SaveChanges ()
+    {
+        // Save the changes here
+        // For example:
+        // await MachineService.UpdateMachine(Machine);
+        NavigationManager.NavigateTo($"/machines"); // Redirect after save
+    }
+
+
+}

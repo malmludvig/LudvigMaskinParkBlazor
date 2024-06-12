@@ -1,0 +1,55 @@
+﻿@page "/machinedetail/{MachineId:guid}"
+
+<h3>MachineDetail</h3>
+
+
+
+
+<div class="col-12 row">
+    <div class="col-2 text-center">
+
+
+    </div>
+    <div class="col-10 row">
+        <div class="col-12 col-xxl-8">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Machine ID</label>
+                <div class="col-sm-8">
+                    <label type="text" class="form-control-plaintext">@MachineId</label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Machine name</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Machine.Name</label>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Status</label>
+                <div class="col-sm-8">
+                    <label type="text" readonly class="form-control-plaintext">@Machine.Status</label>
+                </div>
+            </div>
+            <a href="@($"editmachine/{MachineId}")" class="btn btn-outline-primary btn-s">
+                Edit machine
+            </a>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+@code {
+
+}
